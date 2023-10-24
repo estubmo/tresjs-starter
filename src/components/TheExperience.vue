@@ -2,7 +2,7 @@
 import { TresCanvas, useRenderLoop } from '@tresjs/core'
 import { reactive, shallowRef } from 'vue'
 import { BasicShadowMap, SRGBColorSpace, NoToneMapping } from 'three'
-import { OrbitControls } from '@tresjs/cientos'
+import { ScrollControls } from '@tresjs/cientos'
 
 const state = reactive({
   clearColor: '#82DBC5',
@@ -17,8 +17,8 @@ const { onLoop } = useRenderLoop()
 
 const boxRef = shallowRef(null)
 
-onLoop(({ elapsed}) => {
-  if(boxRef) {
+onLoop(({ elapsed }) => {
+  if (boxRef) {
     boxRef.value.rotation.y = elapsed
     boxRef.value.rotation.z = elapsed
   }
@@ -27,11 +27,11 @@ onLoop(({ elapsed}) => {
 
 <template>
   <TresCanvas v-bind="state">
-    <TresPerspectiveCamera :position="[5,5,5]" />
-    <OrbitControls />
+    <TresPerspectiveCamera :position="[5, 5, 5]" />
+    <ScrollControls />
     <TresAmbientLight :intensity="0.5" :color="'red'" />
-    <TresMesh ref="boxRef" :position="[0,2,0]">
-      <TresBoxGeometry :args="[1,1,1]" />
+    <TresMesh ref="boxRef" :position="[0, 2, 0]">
+      <TresBoxGeometry :args="[1, 1, 1]" />
       <TresMeshNormalMaterial />
     </TresMesh>
     <TresDirectionalLight :position="[0, 2, 4]" :intensity="1" cast-shadow />

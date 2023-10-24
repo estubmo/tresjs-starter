@@ -21,7 +21,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tresjs/cientos": "latest",
+    "@tresjs/cientos": "^3.5.1",
     "@tresjs/core": "latest",
     "three": "latest",
     "vue": "^3.3.4"
